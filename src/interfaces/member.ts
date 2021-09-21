@@ -1,7 +1,8 @@
 
 export interface Member {
     ID: number
-    name: string
+    first: string
+    last: string
     email: string
-    health: string
+    checkmark: string
 }
