@@ -4,5 +4,5 @@ export interface Member {
     first: string
     last: string
     email: string
-    checkmark: string
+    status: string
 }

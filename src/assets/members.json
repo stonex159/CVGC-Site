@@ -1,8 +1,9 @@
 [
     {
-        "id": 702471442,
-        "name": "Braxton Madara",
+        "ID": 702471442,
+        "first": "Braxton",
+        "last": "Madara",
         "email": "stonex@udel.edu",
-        "checkmark": "green"
+        "status": "Approved"
     }
 ]
