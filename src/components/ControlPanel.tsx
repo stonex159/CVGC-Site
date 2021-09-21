@@ -22,6 +22,6 @@ export function ControlPanel(): JSX.Element {
     </p>
     <br></br>
 
-    <button id="submit-button"> submit </button>
+    <Button id="submit-button"> submit </Button>
     </Col>
 }
