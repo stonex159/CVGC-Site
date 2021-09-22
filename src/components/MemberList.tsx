@@ -1,5 +1,5 @@
-import { Col } from 'react-bootstrap'
-import { Member } from '../interfaces/member'
+import { Col } from 'react-bootstrap';
+import { Member } from '../interfaces/member';
 
 export function MemberList({member}: {member: Member}): JSX.Element {
     return <Col> 

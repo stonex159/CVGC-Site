@@ -5,7 +5,7 @@ import { MemberList } from './components/MemberList';
 import { ControlPanel } from './components/ControlPanel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
-import { Member } from './interfaces/member'
+import { Member, addMember } from './interfaces/member'
 
 
 function App(): JSX.Element {

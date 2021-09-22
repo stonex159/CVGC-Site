@@ -1,4 +1,5 @@
-import { Button, Col } from 'react-bootstrap'
+import { Button, Col } from 'react-bootstrap';
+import 'member.tsx';
 
 export function ControlPanel(): JSX.Element {
     return <Col>
