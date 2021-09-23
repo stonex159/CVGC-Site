@@ -1,5 +1,5 @@
 import { Button, Col, Dropdown } from 'react-bootstrap';
-import 'member.tsx';
+import 'member.ts';
 
 export function ControlPanel(): JSX.Element {
     return <Col>
