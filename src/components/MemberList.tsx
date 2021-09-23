@@ -14,8 +14,7 @@ export function MemberList({member}: {member: Member}): JSX.Element {
         <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>{member.first}</td>
-                <td>{member.last}</td>
+                <td>{member.name}</td>
                 <td>{member.email}</td>
                 <td>{member.status}</td>
             </tr>

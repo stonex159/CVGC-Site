@@ -1,40 +1,52 @@
-import { Button, Col, Dropdown } from 'react-bootstrap';
-import 'member.ts';
+import React, { useState } from 'react';
+import { Button, Col, Form } from 'react-bootstrap';
 
-export function ControlPanel(): JSX.Element {
-    return <Col>
-    <div>
-        <form>
-            <label>First Name:
-                <input className="textbox" type="text" name="First Name" placeholder="Joe"></input> 
-            </label>
-            <br></br>
-
-            <label>Last Name:
-                <input className="textbox" type="text" name="Last Name" placeholder="Jones"></input>
-            </label>
-            <br></br>
-
-            <label>Email Address:
-                <input className="textbox" type="email" name="Email Address" placeholder="Jjones@udel.edu"></input>
-            </label>
-            <br></br>
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Checkmark Status
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/Red">Red</Dropdown.Item>
-                    <Dropdown.Item href="#/Yellow">Yellow</Dropdown.Item>
-                    <Dropdown.Item href="#/Green">Green</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-            <br></br>
-        </form>
-    </div>
-        
-
-    <Button id="submit-button"> submit </Button>
-    </Col>
-}
+export function ScreeningForm(): JSX.Element {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [color, setColor] = useState("");
+  
+    function validateForm() {
+      return email.length > 0 && color.length > 0 && name.length > 0;
+    }
+  
+    function handleSubmit(event: { preventDefault: () => void; }) {
+      event.preventDefault();
+    }
+  
+    return (
+      <Col className="Login">
+        <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="name">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              autoFocus
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              autoFocus
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="healthCheck">
+            <Form.Label>Health Check Color</Form.Label>
+            <Form.Control
+              type="status"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </Form.Group>
+          <Button type="submit" disabled={!validateForm()}>
+            Submit
+          </Button>
+        </Form>
+      </Col>
+    );
+  }
