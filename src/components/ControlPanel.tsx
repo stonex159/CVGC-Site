@@ -1,4 +1,4 @@
-import { Button, Col } from 'react-bootstrap';
+import { Button, Col, Dropdown } from 'react-bootstrap';
 import 'member.tsx';
 
 export function ControlPanel(): JSX.Element {
@@ -19,9 +19,17 @@ export function ControlPanel(): JSX.Element {
                 <input className="textbox" type="email" name="Email Address" placeholder="Jjones@udel.edu"></input>
             </label>
             <br></br>
-            <label>Health Check Status:
-                <input className="textbox" type="text" name="Health Check Status"></input>
-            </label>
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Checkmark Status
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/Red">Red</Dropdown.Item>
+                    <Dropdown.Item href="#/Yellow">Yellow</Dropdown.Item>
+                    <Dropdown.Item href="#/Green">Green</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
             <br></br>
         </form>
     </div>
