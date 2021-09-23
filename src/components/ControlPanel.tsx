@@ -18,8 +18,9 @@ export function ScreeningForm(): JSX.Element {
       <Col className="Login">
         <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label className="label">Full Name: </Form.Label>
             <Form.Control
+              className="textBox"
               autoFocus
               type="name"
               value={name}
@@ -27,8 +28,9 @@ export function ScreeningForm(): JSX.Element {
             />
           </Form.Group>
           <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
+            <Form.Label className="label">Email: </Form.Label>
             <Form.Control
+              className="textBox"
               autoFocus
               type="email"
               value={email}
@@ -36,14 +38,15 @@ export function ScreeningForm(): JSX.Element {
             />
           </Form.Group>
           <Form.Group controlId="healthCheck">
-            <Form.Label>Health Check Color</Form.Label>
+            <Form.Label className="label">Health Check Color: </Form.Label>
             <Form.Control
+              className="textBox"
               type="status"
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
           </Form.Group>
-          <Button type="submit" disabled={!validateForm()}>
+          <Button type="submit" id="submit" disabled={!validateForm()}>
             Submit
           </Button>
         </Form>

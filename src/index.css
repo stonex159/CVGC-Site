@@ -16,11 +16,19 @@ code {
   margin-top: 1em;
 }
 
-.textbox {
+.table {
   margin-top: 1em;
-  margin-left: 1em;
 }
 
-#submit-button {
+.label {
   margin-top: 1em;
+}
+
+.textbox {
+  margin-bottom: 1em;
+}
+
+#submit {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }

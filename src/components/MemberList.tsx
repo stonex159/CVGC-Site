@@ -6,8 +6,7 @@ export function MemberList({member}: {member: Member}): JSX.Element {
     <table className="table">
         <thead className="thead-dark">
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Status</th>
         </thead>
