@@ -17,6 +17,9 @@ export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Eleme
     }
 
     function saveMember(){
+      //console.log(name);
+      //console.log(email);
+      //console.log(status);
       props.addMember({name, email, status});
     }
   

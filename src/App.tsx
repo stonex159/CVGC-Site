@@ -9,9 +9,9 @@ import { Person } from './interfaces/member'
 
 function App(): JSX.Element {
   const [club, setClub] = useState<Person[]>(MEMBERS);
-  const c = {addMember};
   
   function addMember(person: Person){
+    //console.log(person);
     setClub([...club, person]);
   }
 
@@ -21,7 +21,7 @@ function App(): JSX.Element {
         <ScreeningForm addMember={addMember}></ScreeningForm>
       </Row>
       <Row>
-        <MemberList></MemberList>
+        <MemberList theClub={club}></MemberList>
       </Row>
     </Container>
   );
