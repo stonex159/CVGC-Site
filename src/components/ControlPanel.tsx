@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
+import { Person } from '../interfaces/member';
 
-export function ScreeningForm(): JSX.Element {
+export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Element {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [color, setColor] = useState("");
+    const [status, setStatus] = useState("");
   
     function validateForm() {
-      return email.length > 0 && color.length > 0 && name.length > 0;
+      return email.length > 0 && status.length > 0 && name.length > 0;
     }
   
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
+      saveMember();
+    }
+
+    function saveMember(){
+      props.addMember({name, email, status});
     }
   
     return (
@@ -42,8 +48,8 @@ export function ScreeningForm(): JSX.Element {
             <Form.Control
               className="textBox"
               type="status"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
             />
           </Form.Group>
           <Button type="submit" id="submit" disabled={!validateForm()}>

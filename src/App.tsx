@@ -5,18 +5,23 @@ import { MemberList } from './components/MemberList';
 import { ScreeningForm } from './components/ControlPanel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
-import { Member} from './interfaces/member'
-
+import { Person } from './interfaces/member'
 
 function App(): JSX.Element {
-  const [addMember] = useState<Member>(MEMBERS[0]);
+  const [club, setClub] = useState<Person[]>(MEMBERS);
+  const c = {addMember};
+  
+  function addMember(person: Person){
+    setClub([...club, person]);
+  }
+
   return (
     <Container className="App">
       <Row>
-        <ScreeningForm></ScreeningForm>
+        <ScreeningForm addMember={addMember}></ScreeningForm>
       </Row>
       <Row>
-        <MemberList member={addMember}></MemberList>
+        <MemberList></MemberList>
       </Row>
     </Container>
   );

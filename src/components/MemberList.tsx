@@ -1,26 +1,24 @@
+import React from 'react';
 import { Col } from 'react-bootstrap';
-import { Member } from '../interfaces/member';
+import MEMBERS from '../assets/members.json';
+import * as ReactBootStrap from 'react-bootstrap';
+import { Person } from '../interfaces/member';
 
-class Person {
-    name: string;
-    email: string;
-    status: string;
-  
-    constructor(name: string, email: string, status: string) {
-      this.name = name;
-      this.email = email;
-      this.status = status;
+export function MemberList(): JSX.Element {
+
+    function renderList(person: Person, index: number){
+        return (
+            <tr key={index}>
+                <td>{person.name}</td>
+                <td>{person.email}</td>
+                <td>{person.status}</td>
+            </tr>
+        )
     }
-  }
+    
 
-export function addMember(member: Member): {name: string; email: string; status: string} {
-    const person: Member = new Person(member.name, member.email, member.status);
-    return person;
-}
-
-export function MemberList({member}: {member: Member}): JSX.Element {
     return <Col> 
-    <table className="table">
+    <ReactBootStrap.Table>
         <thead className="thead-dark">
             <th scope="col">#</th>
             <th scope="col">Name</th>
@@ -29,13 +27,10 @@ export function MemberList({member}: {member: Member}): JSX.Element {
         </thead>
         <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>{member.name}</td>
-                <td>{member.email}</td>
-                <td>{member.status}</td>
+                {MEMBERS.map(renderList)}
             </tr>
         </tbody>
-    </table>
+    </ReactBootStrap.Table>
     </Col>
 
 }
