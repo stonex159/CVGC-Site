@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 import {Modal, ModalBody, Form, ModalFooter, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
-import club from '../App'
 
-export function HandleEdit(person: Person, index: number){
-    const [show, setShow] = useState(false);
-    const [name, setName] = useState(person.name);
-    const [email, setEmail] = useState(person.email);
-    const [status, setStatus] = useState(person.status);
+export function EditModal({getMember, visible, setVisible}: {getMember: (b: number)=>Person, visible: boolean, setVisible: (c:boolean)=>void}): JSX.Element {
+    const [index, setIndex] = useState(0);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [status, setStatus] = useState("");
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const hide = ()=>setVisible(false);
+
+    function handleIndexSubmit(str: string): void{
+        var num = parseInt(str);
+        var person = getMember(num);
+
+        setIndex(num);
+        setName(person.name);
+        setEmail(person.email);
+        setStatus(person.status);
+    }
 
     return (
     <Modal
-        show={show}
-        onHide={handleClose}
+        show={visible}
+        onHide={hide}
         backdrop="static"
         keyboard={false}
         datatestid="modal"
@@ -27,27 +35,38 @@ export function HandleEdit(person: Person, index: number){
         <ModalBody>
             <Form>
                 <Form.Group>
+                    <Form.Label>
+                        Index
+                    </Form.Label>
+                </Form.Group>
+                <Form.Control as="textarea" rows={1}
+                    value={index}
+                    onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => handleIndexSubmit(ev.target.value)}/>
+            </Form>
+
+            <Form>
+                <Form.Group>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control as="textarea" rows={3}
+                    <Form.Control as="textarea" rows={1}
                     value={name}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setName(ev.target.value)}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>email</Form.Label>
-                    <Form.Control as="textarea" rows={3}
+                    <Form.Control as="textarea" rows={1}
                     value={email}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setEmail(ev.target.value)}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control as="textarea" rows={3}
+                    <Form.Label>Status</Form.Label>
+                    <Form.Control as="textarea" rows={1}
                     value={status}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setStatus(ev.target.value)}/>
                 </Form.Group>
             </Form>
         </ModalBody>
         <ModalFooter>
-            <Button>
+            <Button onClick={hide}>
                 Save Changes
             </Button>
         </ModalFooter>

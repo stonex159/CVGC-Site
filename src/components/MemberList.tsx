@@ -1,10 +1,9 @@
 import React from 'react';
-import { Col, Button } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Person } from '../interfaces/member';
-import { HandleEdit } from './EditModal';
 
-export function MemberList(props:{theClub: Person[]}): JSX.Element {
+export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
 
     function renderList(person: Person, index: number){
         return (
@@ -12,7 +11,6 @@ export function MemberList(props:{theClub: Person[]}): JSX.Element {
                 <td>{person.name}</td>
                 <td>{person.email}</td>
                 <td>{person.status}</td>
-                <td><Button onClick={()=>HandleEdit(person,index)}>Edit</Button></td>
             </tr>
     )}
 
@@ -25,7 +23,7 @@ export function MemberList(props:{theClub: Person[]}): JSX.Element {
             <th scope="col"></th>
         </thead>
         <tbody>
-            {props.theClub.map(renderList)}
+            {theClub.map(renderList)}
         </tbody>
     </ReactBootStrap.Table>
     </Col>

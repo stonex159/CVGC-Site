@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
-
-export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Element {
+export function ControlPanel({getMember, showEditModal, addMember}: {getMember: (c:number)=>Person, showEditModal: (b: boolean)=>void, addMember: (p:Person) => void}): JSX.Element {
+    const [id, setId] = useState(0);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState("");
   
     function validateForm() {
       return email.length > 0 && status.length > 0 && name.length > 0;
+    }
+
+    function validateTable() {
+      if(getMember(1))
+        return getMember(1).name !== "" && getMember(1).email !== "" && getMember(1).status !== "";
+      else
+        return false;
     }
   
     function handleSubmit(event: { preventDefault: () => void; }) {
@@ -21,7 +28,12 @@ export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Eleme
     }
 
     function saveMember(){
-      props.addMember({name, email, status});
+      addMember({id, name, email, status});
+      setId(id+1);
+    }
+
+    function editMember() {
+      showEditModal(true);
     }
   
     return (
@@ -58,6 +70,9 @@ export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Eleme
           </Form.Group>
           <Button type="submit" id="submit" disabled={!validateForm()}>
             Submit
+          </Button>
+          <Button onClick={()=>editMember()} disabled={!validateTable()}>
+            Edit
           </Button>
         </Form>
       </Col>
