@@ -6,6 +6,9 @@ import { ScreeningForm } from './components/ControlPanel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
 import { Person } from './interfaces/member'
+import { HandleEdit } from './components/EditModal';
+//import { ReactComponent as ClubBanner } from './assets/banner.svg';
+//import { ReactComponent as ClubLogo } from './assets/logo.svg';
 
 function App(): JSX.Element {
   const [club, setClub] = useState<Person[]>(MEMBERS);

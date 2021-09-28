@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Button } from 'react-bootstrap';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Person } from '../interfaces/member';
-import ModalHeader from 'react-bootstrap/esm/ModalHeader';
-import ModalFooter from 'react-bootstrap/esm/ModalFooter';
 import { HandleEdit } from './EditModal';
 
 export function MemberList(props:{theClub: Person[]}): JSX.Element {
-
 
     function renderList(person: Person, index: number){
         return (
@@ -17,10 +14,7 @@ export function MemberList(props:{theClub: Person[]}): JSX.Element {
                 <td>{person.status}</td>
                 <td><Button onClick={()=>HandleEdit(person,index)}>Edit</Button></td>
             </tr>
-        )
-    }
-
-    
+    )}
 
     return <Col> 
     <ReactBootStrap.Table>
