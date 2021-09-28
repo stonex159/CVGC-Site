@@ -14,15 +14,12 @@ export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Eleme
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
       saveMember();
-      setName("");
-      setEmail("");
-      setStatus("");
+      setName(""); //clears the name box
+      setEmail(""); //clears the email box
+      setStatus(""); //clears the status box
     }
 
     function saveMember(){
-      //console.log(name);
-      //console.log(email);
-      //console.log(status);
       props.addMember({name, email, status});
     }
   
