@@ -14,6 +14,9 @@ export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Eleme
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
       saveMember();
+      setName("");
+      setEmail("");
+      setStatus("");
     }
 
     function saveMember(){
