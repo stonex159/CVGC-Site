@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
+
 export function ScreeningForm(props: {addMember: (p:Person) => void}): JSX.Element {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");

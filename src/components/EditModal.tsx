@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Modal, ModalBody, Form, ModalFooter, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
+import club from '../App'
 
 export function HandleEdit(person: Person, index: number){
     const [show, setShow] = useState(false);
@@ -11,10 +12,6 @@ export function HandleEdit(person: Person, index: number){
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    function saveEdit(){
-        
-    }
 
     return (
     <Modal
