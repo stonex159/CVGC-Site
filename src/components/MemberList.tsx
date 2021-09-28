@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Col, Modal, ModalBody } from 'react-bootstrap';
+import { Col, Button } from 'react-bootstrap';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import ModalFooter from 'react-bootstrap/esm/ModalFooter';
-import Button from '@restart/ui/esm/Button';
+import { HandleEdit } from './EditModal';
 
 export function MemberList(props:{theClub: Person[]}): JSX.Element {
+
 
     function renderList(person: Person, index: number){
         return (
@@ -14,31 +15,11 @@ export function MemberList(props:{theClub: Person[]}): JSX.Element {
                 <td>{person.name}</td>
                 <td>{person.email}</td>
                 <td>{person.status}</td>
-                <td><button onClick={()=>handleEdit()}>Edit</button></td>
+                <td><Button onClick={()=>HandleEdit(person,index)}>Edit</Button></td>
             </tr>
         )
     }
 
-    function handleEdit(){
-        const [show, setShow] = useState(false);
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
-
-        return (
-        <Modal>
-            <ModalHeader closeButton>
-                Edit
-            </ModalHeader>
-            <ModalBody>
-
-            </ModalBody>
-            <ModalFooter>
-                <Button>
-                    Save Changes
-                </Button>
-            </ModalFooter>
-        </Modal>
-    )}
     
 
     return <Col> 
@@ -47,6 +28,7 @@ export function MemberList(props:{theClub: Person[]}): JSX.Element {
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Status</th>
+            <th scope="col"></th>
         </thead>
         <tbody>
             {props.theClub.map(renderList)}
