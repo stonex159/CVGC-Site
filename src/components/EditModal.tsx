@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Modal, ModalBody, Form, ModalFooter, Button} from 'react-bootstrap'
+import {Modal, ModalBody, Form, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
 
@@ -24,11 +24,24 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
 
     function handleSearch(event: { preventDefault: () => void; }) {
         event.preventDefault();
+
         var person = getMember(index);
+
         setName(person.name);
         setEmail(person.email);
         setStatus(person.status);
+    }
+
+    function saveChanges(event: { preventDefault: () => void; }){
+        event.preventDefault();
+
+        console.log("save enter");
         changeMember(index, name, email, status);
+        console.log("change made");
+        
+        setName("");
+        setEmail("");
+        setStatus("");
     }
 
     return (
@@ -47,16 +60,17 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
             onSubmit={handleSearch}>
                 <Form.Group>
                     <Form.Label>
-                        Enter the index of the submission, starting at 1.
+                        Row Number
                     </Form.Label>
                 </Form.Group>
-                    <input type="number" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
+                    <input type="number" min="1" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
                 <Button type="submit" id="submit">
-                    search
+                    Search
                 </Button>
             </Form>
 
-            <Form>
+            <Form
+            onSubmit={saveChanges}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control as="textarea" rows={1}
@@ -75,12 +89,10 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
                     value={status}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setStatus(ev.target.value)}/>
                 </Form.Group>
+                <Button type="submit" id="Save Changes" onClick={hide}>
+                Save Changes
+                </Button>
             </Form>
         </ModalBody>
-        <ModalFooter>
-            <Button onClick={hide}>
-                Save Changes
-            </Button>
-        </ModalFooter>
     </Modal>
 )}
