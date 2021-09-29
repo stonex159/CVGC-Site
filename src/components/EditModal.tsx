@@ -3,12 +3,13 @@ import {Modal, ModalBody, Form, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
 
-export function EditModal({getMember, checkMember, changeMember, visible, setVisible}: 
+export function EditModal({getMember, checkMember, changeMember, visible, setVisible, club}: 
     {getMember: (b: number)=>Person, 
     checkMember: (d:number)=>boolean, 
     changeMember: (e:number, f:string, g:string, h:string)=> void, 
     visible: boolean, 
-    setVisible: (c:boolean)=>void}): JSX.Element {
+    setVisible: (c:boolean)=>void,
+    club: Person[]}): JSX.Element {
 
     const [index, setIndex] = useState(0);
     const [name, setName] = useState("");
@@ -38,7 +39,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
         console.log("save enter");
         changeMember(index, name, email, status);
         console.log("change made");
-        
+
         setName("");
         setEmail("");
         setStatus("");
@@ -63,7 +64,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
                         Row Number
                     </Form.Label>
                 </Form.Group>
-                    <input type="number" min="1" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
+                    <input type="number" min="1" max={club.length-1} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
                 <Button type="submit" id="submit">
                     Search
                 </Button>

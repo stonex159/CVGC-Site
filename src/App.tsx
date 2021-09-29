@@ -31,12 +31,11 @@ function App(): JSX.Element {
   }
 
   function changeMember(index:number, newName:string, newEmail:string, newStatus:string){
-    console.log(club[index]);
     const p: Person = {...club[index], name: newName, email: newEmail, status: newStatus};
     const newClub = [...club];
+
     newClub[index] = p;
     setClub(newClub);
-    console.log(club[index]);
   }
 
   return (
@@ -45,7 +44,7 @@ function App(): JSX.Element {
         <ControlPanel getMember={getMember} showEditModal={setVisible}  addMember={addMember}></ControlPanel>
       </Row>
       <Row>
-        <EditModal getMember={getMember} checkMember={checkMember} changeMember={changeMember} visible={visible} setVisible={setVisible}></EditModal>
+        <EditModal getMember={getMember} checkMember={checkMember} changeMember={changeMember} visible={visible} setVisible={setVisible} club={club}></EditModal>
         <MemberList theClub={club}></MemberList>
       </Row>
     </Container>
