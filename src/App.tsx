@@ -23,6 +23,19 @@ function App(): JSX.Element {
     return club[index];
   }
 
+  function checkMember(index:number): boolean{
+    if(club[index])
+      return true;
+    else
+      return false
+  }
+
+  function changeMember(index:number, name:string, email:string, status:string){
+    club[index].name = name;
+    club[index].email = email;
+    club[index].status = status;
+  }
+
   return (
     <Container className="App">
       <Row>
@@ -30,7 +43,7 @@ function App(): JSX.Element {
       </Row>
       <Row>
         <MemberList theClub={club}></MemberList>
-        <EditModal getMember={getMember} visible={visible} setVisible={setVisible}></EditModal>
+        <EditModal getMember={getMember} checkMember={checkMember} changeMember={changeMember} visible={visible} setVisible={setVisible}></EditModal>
       </Row>
     </Container>
   );

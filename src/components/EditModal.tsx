@@ -3,7 +3,13 @@ import {Modal, ModalBody, Form, ModalFooter, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
 
-export function EditModal({getMember, visible, setVisible}: {getMember: (b: number)=>Person, visible: boolean, setVisible: (c:boolean)=>void}): JSX.Element {
+export function EditModal({getMember, checkMember, changeMember, visible, setVisible}: 
+    {getMember: (b: number)=>Person, 
+    checkMember: (d:number)=>boolean, 
+    changeMember: (e:number, f:string, g:string, h:string)=> void, 
+    visible: boolean, 
+    setVisible: (c:boolean)=>void}): JSX.Element {
+
     const [index, setIndex] = useState(0);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -11,14 +17,18 @@ export function EditModal({getMember, visible, setVisible}: {getMember: (b: numb
 
     const hide = ()=>setVisible(false);
 
-    function handleIndexSubmit(str: string): void{
-        var num = parseInt(str);
-        var person = getMember(num);
+    function handleIndexSearch(num: number){
+        if(checkMember(num))
+            setIndex(num);
+    }
 
-        setIndex(num);
+    function handleSearch(event: { preventDefault: () => void; }) {
+        event.preventDefault();
+        var person = getMember(index);
         setName(person.name);
         setEmail(person.email);
         setStatus(person.status);
+        changeMember(index, name, email, status);
     }
 
     return (
@@ -33,15 +43,17 @@ export function EditModal({getMember, visible, setVisible}: {getMember: (b: numb
             Edit
         </ModalHeader>
         <ModalBody>
-            <Form>
+            <Form 
+            onSubmit={handleSearch}>
                 <Form.Group>
                     <Form.Label>
-                        Index
+                        Enter the index of the submission, starting at 1.
                     </Form.Label>
                 </Form.Group>
-                <Form.Control as="textarea" rows={1}
-                    value={index}
-                    onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => handleIndexSubmit(ev.target.value)}/>
+                    <input type="number" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
+                <Button type="submit" id="submit">
+                    search
+                </Button>
             </Form>
 
             <Form>
