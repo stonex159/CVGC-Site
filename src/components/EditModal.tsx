@@ -18,31 +18,29 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
 
     const hide = ()=>setVisible(false);
 
-    function handleIndexSearch(num: number){
-        if(checkMember(num))
+    function handleIndexSearch(num: number){ 
+        if(checkMember(num)) // makes sure the index is not out-of-bounds of the array
             setIndex(num);
     }
 
-    function handleSearch(event: { preventDefault: () => void; }) {
+    function handleSearch(event: { preventDefault: () => void; }){
         event.preventDefault();
 
-        var person = getMember(index);
+        const person = getMember(index);
 
-        setName(person.name);
-        setEmail(person.email);
-        setStatus(person.status);
+        setName(person.name); // sets the name from the person indexed into the name field
+        setEmail(person.email); // sets the email from the person indexed into the email field
+        setStatus(person.status); // sets the status from the person indexed into the status field
     }
 
     function saveChanges(event: { preventDefault: () => void; }){
         event.preventDefault();
 
-        console.log("save enter");
-        changeMember(index, name, email, status);
-        console.log("change made");
+        changeMember(index, name, email, status); // sends the edit data to be put into the array
 
-        setName("");
-        setEmail("");
-        setStatus("");
+        setName(""); // clears the name field upon submission of edit
+        setEmail(""); // clears the email field upon submission of edit
+        setStatus(""); // clears the status field upon submission of edit
     }
 
     return (

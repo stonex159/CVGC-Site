@@ -26,12 +26,12 @@ export function ControlPanel({getMember, showEditModal, addMember}:
       event.preventDefault();
 
       addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
-      setName(""); //clears the name box
-      setEmail(""); //clears the email box
-      setStatus(""); //clears the status box
+      setName(""); // clears the name box
+      setEmail(""); // clears the email box
+      setStatus(""); // clears the status box
     }
 
-    function editMember() {
+    function showModal() { // makes the modal appear
       showEditModal(true);
     }
   
@@ -70,7 +70,7 @@ export function ControlPanel({getMember, showEditModal, addMember}:
           <Button type="submit" id="submit" disabled={!validateForm()}>
             Submit
           </Button>
-          <Button id="edit_button" onClick={()=>editMember()} disabled={!validateTable()}>
+          <Button id="edit_button" onClick={()=>showModal()} disabled={!validateTable()}>
             Edit
           </Button>
         </Form>

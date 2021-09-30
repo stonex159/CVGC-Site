@@ -5,7 +5,7 @@ import { Person } from '../interfaces/member';
 
 export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
 
-    function renderList(person: Person, index: number){
+    function renderList(person: Person, index: number){ // renders all the data passsed in from club.map as a table
         return (
             <tr key={index}>
                 <td>{displayIndex(index)}</td>
@@ -15,7 +15,7 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
             </tr>
     )}
 
-    function displayIndex(index: number){
+    function displayIndex(index: number){ // Keeps the # column from starting at 0 and out of bounds of the data
         if(index>0){
             return index;
         }

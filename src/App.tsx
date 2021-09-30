@@ -14,16 +14,16 @@ function App(): JSX.Element {
   const [club, setClub] = useState<Person[]>(MEMBERS);
   const [visible, setVisible] = useState<boolean>(false);
   
-  function addMember(person: Person){
+  function addMember(person: Person){ // adds a person to the club array
     //console.log(person);
     setClub([...club, person]);
   }
 
-  function getMember(index:number){
+  function getMember(index:number){ // returns the member from the array found at the index
     return club[index];
   }
 
-  function checkMember(index:number): boolean{
+  function checkMember(index:number): boolean{ // checks to see if the index is inbound of the array
     if(club[index])
       return true;
     else
@@ -31,11 +31,11 @@ function App(): JSX.Element {
   }
 
   function changeMember(index:number, newName:string, newEmail:string, newStatus:string){
-    const p: Person = {...club[index], name: newName, email: newEmail, status: newStatus};
-    const newClub = [...club];
+    const p: Person = {...club[index], name: newName, email: newEmail, status: newStatus}; // creates a new person with the edit form's properties
+    const newClub = [...club]; // creates a shallow copy of the club array
 
-    newClub[index] = p;
-    setClub(newClub);
+    newClub[index] = p; // replaces the member at the index of the copy-array
+    setClub(newClub); // sets club to look at the newClub array
   }
 
   return (
