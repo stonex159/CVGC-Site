@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MEMBERS from './assets/members.json'
-import './App.css';
+import './css files/App.css';
 import { MemberList } from './components/MemberList';
 import { ControlPanel } from './components/ControlPanel';
 import 'bootstrap/dist/css/bootstrap.min.css';
