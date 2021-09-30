@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
-export function ControlPanel({getMember, showEditModal, addMember}: {getMember: (c:number)=>Person, showEditModal: (b: boolean)=>void, addMember: (p:Person) => void}): JSX.Element {
-    const [id, setId] = useState(0);
+export function ControlPanel({getMember, showEditModal, addMember}: 
+  {getMember: (c:number)=>Person, 
+    showEditModal: (b: boolean)=>void, 
+    addMember: (p:Person) => void}): JSX.Element {
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState("");
   
-    function validateForm() {
+    function validateForm() { // Makes sure that no text field is empty before submit
       return email.length > 0 && status.length > 0 && name.length > 0;
     }
 
-    function validateTable() {
+    function validateTable() { // Makes sure that there is data to edit
       if(getMember(1))
         return getMember(1).name !== "" && getMember(1).email !== "" && getMember(1).status !== "";
       else
@@ -21,15 +24,11 @@ export function ControlPanel({getMember, showEditModal, addMember}: {getMember: 
   
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
-      saveMember();
+
+      addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
       setName(""); //clears the name box
       setEmail(""); //clears the email box
       setStatus(""); //clears the status box
-    }
-
-    function saveMember(){
-      addMember({id, name, email, status});
-      setId(id+1);
     }
 
     function editMember() {
@@ -71,7 +70,7 @@ export function ControlPanel({getMember, showEditModal, addMember}: {getMember: 
           <Button type="submit" id="submit" disabled={!validateForm()}>
             Submit
           </Button>
-          <Button onClick={()=>editMember()} disabled={!validateTable()}>
+          <Button id="edit_button" onClick={()=>editMember()} disabled={!validateTable()}>
             Edit
           </Button>
         </Form>
