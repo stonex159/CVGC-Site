@@ -7,6 +7,8 @@ import { ControlPanel } from './components/ControlPanel';
 import { Container, Row } from 'react-bootstrap'
 import { Person } from './interfaces/member'
 import { EditModal } from './components/EditModal';
+//import CVGC_Banner from '../src/assets/CVGC_Wallpaper.png'
+import CVGC_Logo from '../src/assets/CVGC_Logo.png'
 //import { ReactComponent as ClubBanner } from './assets/banner.svg';
 //import { ReactComponent as ClubLogo } from './assets/logo.svg';
 
@@ -38,7 +40,13 @@ function App(): JSX.Element {
   }
 
   return (
+    
     <Container className="App">
+      <img 
+        src={CVGC_Logo}
+        alt=""
+        id="CVGC-Logo"
+        />
       <Row>
         <ControlPanel getMember={getMember} showEditModal={setVisible}  addMember={addMember}></ControlPanel>
       </Row>
@@ -46,6 +54,7 @@ function App(): JSX.Element {
         <EditModal getMember={getMember} checkMember={checkMember} changeMember={changeMember} visible={visible} setVisible={setVisible} club={club}></EditModal>
         <MemberList theClub={club}></MemberList>
       </Row>
+      <Row></Row>
     </Container>
   );
 }

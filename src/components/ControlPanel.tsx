@@ -10,9 +10,10 @@ export function ControlPanel({getMember, showEditModal, addMember}:
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState("");
+    const [value, setValue] = useState("");
   
     function validateForm() { // Makes sure that no text field is empty before submit
-      return email.length > 0 && status.length > 0 && name.length > 0;
+      return email.length > 0 && name.length > 0 && value !== "";
     }
 
     function validateTable() { // Makes sure that there is data to edit
@@ -24,11 +25,12 @@ export function ControlPanel({getMember, showEditModal, addMember}:
   
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
-
+      
       addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
-      setName(""); // clears the name box
-      setEmail(""); // clears the email box
-      setStatus(""); // clears the status box
+      setName(""); // clears the name const and text box
+      setEmail(""); // clears the email const and text box
+      setStatus(""); // clears the status const
+      setValue(""); // unchecks the radio buttons
     }
 
     function showModal() { // makes the modal appear
@@ -74,7 +76,8 @@ export function ControlPanel({getMember, showEditModal, addMember}:
                   value="Red"
                   id="red-radio"
                   label="Red"
-                  onChange={(e) => setStatus(e.target.value)}
+                  checked={value === "Red"}
+                  onChange={(e) => {setValue(e.target.value); setStatus(e.target.value)}}
                   />
                   <Form.Check
                   inline
@@ -83,7 +86,8 @@ export function ControlPanel({getMember, showEditModal, addMember}:
                   value="Yellow"
                   id="yellow-radio"
                   label="Yellow"
-                  onChange={(e) => setStatus(e.target.value)}
+                  checked={value === "Yellow"}
+                  onChange={(e) => {setValue(e.target.value); setStatus(e.target.value)}}
                   />
                   <Form.Check
                   inline
@@ -92,7 +96,8 @@ export function ControlPanel({getMember, showEditModal, addMember}:
                   value="Green"
                   id="green-radio"
                   label="Green"
-                  onChange={(e) => setStatus(e.target.value)}
+                  checked={value === "Green"}
+                  onChange={(e) => {setValue(e.target.value); setStatus(e.target.value)}}
                   />
                 </Form.Group>
               </Form.Group>
