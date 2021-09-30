@@ -63,7 +63,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
                     </Form.Label>
                 </Form.Group>
                     <input type="number" min="1" max={club.length-1} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
-                <Button type="submit" id="submit">
+                <Button className="button" type="submit" id="search-button">
                     Search
                 </Button>
             </Form>
@@ -88,7 +88,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
                     value={status}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setStatus(ev.target.value)}/>
                 </Form.Group>
-                <Button type="submit" id="Save Changes" onClick={hide}>
+                <Button className="button" type="submit" id="save-button" onClick={hide}>
                 Save Changes
                 </Button>
             </Form>

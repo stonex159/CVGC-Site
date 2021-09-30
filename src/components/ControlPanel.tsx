@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, Col, Form } from 'react-bootstrap';
+import '../Components_css/ControlPanel.css'
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
 export function ControlPanel({getMember, showEditModal, addMember}: 
@@ -38,41 +39,72 @@ export function ControlPanel({getMember, showEditModal, addMember}:
     return (
       <Col className="Login">
         <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-            <Form.Label className="label">Full Name: </Form.Label>
-            <Form.Control
-              className="textBox"
-              autoFocus
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="email">
-            <Form.Label className="label">Email: </Form.Label>
-            <Form.Control
-              className="textBox"
-              autoFocus
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="healthCheck">
-            <Form.Label className="label">Health Check Color: </Form.Label>
-            <Form.Control
-              className="textBox"
-              type="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            />
-          </Form.Group>
-          <Button type="submit" id="submit" disabled={!validateForm()}>
-            Submit
-          </Button>
-          <Button id="edit_button" onClick={()=>showModal()} disabled={!validateTable()}>
-            Edit
-          </Button>
+          <Row>
+            <Col>
+              <Form.Group  controlId="name">
+                <Form.Label className="label">Full Name </Form.Label>
+                <Form.Control
+                  className="textBox"
+                  autoFocus
+                  type="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="email">
+                <Form.Label className="label">Email </Form.Label>
+                <Form.Control
+                  className="textBox"
+                  autoFocus
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="healthCheck">
+                <Form.Label className="label">Health Check</Form.Label>
+                <Form.Group>
+                  <Form.Check
+                  inline
+                  type="radio"
+                  name="status"
+                  value="Red"
+                  id="red-radio"
+                  label="Red"
+                  onChange={(e) => setStatus(e.target.value)}
+                  />
+                  <Form.Check
+                  inline
+                  type="radio"
+                  name="status"
+                  value="Yellow"
+                  id="yellow-radio"
+                  label="Yellow"
+                  onChange={(e) => setStatus(e.target.value)}
+                  />
+                  <Form.Check
+                  inline
+                  type="radio"
+                  name="status"
+                  value="Green"
+                  id="green-radio"
+                  label="Green"
+                  onChange={(e) => setStatus(e.target.value)}
+                  />
+                </Form.Group>
+              </Form.Group>
+            </Col>
+          </Row>
+            <Button className="button" type="submit" id="submit-button" disabled={!validateForm()}>
+              Submit
+            </Button>
+            <Button className="button" id="edit-button" onClick={()=>showModal()} disabled={!validateTable()}>
+              Edit
+            </Button>
         </Form>
       </Col>
     );

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import MEMBERS from './assets/members.json'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { MemberList } from './components/MemberList';
 import { ControlPanel } from './components/ControlPanel';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
 import { Person } from './interfaces/member'
 import { EditModal } from './components/EditModal';
@@ -15,7 +15,6 @@ function App(): JSX.Element {
   const [visible, setVisible] = useState<boolean>(false);
   
   function addMember(person: Person){ // adds a person to the club array
-    //console.log(person);
     setClub([...club, person]);
   }
 
@@ -27,7 +26,7 @@ function App(): JSX.Element {
     if(club[index])
       return true;
     else
-      return false
+      return false;
   }
 
   function changeMember(index:number, newName:string, newEmail:string, newStatus:string){
