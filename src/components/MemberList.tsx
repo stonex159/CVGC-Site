@@ -24,11 +24,13 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
     return <Col> 
     <ReactBootStrap.Table>
         <thead className="thead-dark">
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+            </tr>
         </thead>
         <tbody>
             {theClub.map(renderList)}

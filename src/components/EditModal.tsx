@@ -30,17 +30,24 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
 
         setName(person.name); // sets the name from the person indexed into the name field
         setEmail(person.email); // sets the email from the person indexed into the email field
-        setStatus(person.status); // sets the status from the person indexed into the status field
+        setStatus(person.status); // selects the radio button according to the status from the person indexed
+    }
+
+    function validateForm() {
+        return name.length > 0 && email.length > 0;
     }
 
     function saveChanges(event: { preventDefault: () => void; }){
         event.preventDefault();
 
         changeMember(index, name, email, status); // sends the edit data to be put into the array
+        clearData();        
+    }
 
+    function clearData() {
         setName(""); // clears the name field upon submission of edit
         setEmail(""); // clears the email field upon submission of edit
-        setStatus(""); // clears the status field upon submission of edit
+        setStatus(""); // deselects the radio buttons
     }
 
     return (
@@ -51,7 +58,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
         keyboard={false}
         datatestid="modal"
     >
-        <ModalHeader closeButton>
+        <ModalHeader closeButton onClick={clearData}>
             Edit
         </ModalHeader>
         <ModalBody>
@@ -62,7 +69,13 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
                         Row Number
                     </Form.Label>
                 </Form.Group>
-                    <input type="number" min="1" max={club.length-1} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}></input>
+                    <input 
+                    type="number" 
+                    min="1" 
+                    max={club.length-1}
+                    onChange={(ev: React.ChangeEvent<HTMLInputElement>) => handleIndexSearch(ev.target.valueAsNumber)}
+                    >
+                    </input>
                 <Button className="button" type="submit" id="search-button">
                     Search
                 </Button>
@@ -70,25 +83,55 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
 
             <Form
             onSubmit={saveChanges}>
-                <Form.Group>
+                <Form.Group controlId="name">
                     <Form.Label>Name</Form.Label>
                     <Form.Control as="textarea" rows={1}
                     value={name}
+                    autoCapitalize = "on"
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setName(ev.target.value)}/>
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>email</Form.Label>
+                <Form.Group controlId="email">
+                    <Form.Label>Email</Form.Label>
                     <Form.Control as="textarea" rows={1}
                     value={email}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setEmail(ev.target.value)}/>
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>Status</Form.Label>
-                    <Form.Control as="textarea" rows={1}
-                    value={status}
-                    onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setStatus(ev.target.value)}/>
+                <Form.Group controlId="healthCheck">
+                    <Form.Label className="label">Health Check</Form.Label>
+                    <Form.Group>
+                        <Form.Check
+                        inline
+                        type="radio"
+                        name="status"
+                        value="Red"
+                        id="red-radio"
+                        label="Red"
+                        checked={status === "Red"}
+                        onChange={(e) => setStatus(e.target.value)}
+                        />
+                        <Form.Check
+                        inline
+                        type="radio"
+                        name="status"
+                        value="Yellow"
+                        id="yellow-radio"
+                        label="Yellow"
+                        checked={status === "Yellow"}
+                        onChange={(e) => setStatus(e.target.value)}
+                        />
+                        <Form.Check
+                        inline
+                        type="radio"
+                        name="status"
+                        value="Green"
+                        id="green-radio"
+                        label="Green"
+                        checked={status === "Green"}
+                        onChange={(e) => setStatus(e.target.value)}
+                        />
+                    </Form.Group>
                 </Form.Group>
-                <Button className="button" type="submit" id="save-button" onClick={hide}>
+                <Button className="button" type="submit" id="save-button" onClick={hide} disabled={!validateForm}>
                 Save Changes
                 </Button>
             </Form>
