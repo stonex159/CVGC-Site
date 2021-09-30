@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../Components_css/ControlPanel.css'
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
