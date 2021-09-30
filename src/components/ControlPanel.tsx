@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import {Button, Col, Form, Row } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
+import { YellowAlert } from './Alerts';
 
 export function ControlPanel({getMember, showEditModal, addMember}: 
   {getMember: (c:number)=>Person, 
@@ -24,6 +25,9 @@ export function ControlPanel({getMember, showEditModal, addMember}:
   
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
+
+      if(status === "Yellow")
+        YellowAlert();
       
       addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
       setName(""); // clears the name const and text box
