@@ -7,15 +7,15 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
     function renderList(person: Person, index: number){ // renders all the data passsed in from club.map as a table
         return (
             <tr key={index}>
-                <td>{index+1}</td>
-                <td>{person.name}</td>
-                <td>{person.email}</td>
-                <td>{person.status}</td>
+                <td id="row-number">{index+1}</td>
+                <td id="name-data">{person.name}</td>
+                <td id="email-data">{person.email}</td>
+                <td id="status-data">{person.status}</td>
             </tr>
     )}
 
     return <Col> 
-    <Table>
+    <Table id="member-table">
         <thead className="thead-dark">
             <tr>
                 <th scope="col">#</th>

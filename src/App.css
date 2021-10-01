@@ -55,6 +55,16 @@
   background-color: green;
 }
 
-.table {
-  border: #61dafb;
+img {
+  height: 15em;
+  width: 15em;
+  position: right;
+}
+
+#CVGC-Banner {
+  width: 30em;
+}
+
+#member-table {
+  border-style: none;
 }
