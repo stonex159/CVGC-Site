@@ -1,16 +1,20 @@
 import { Alert } from "react-bootstrap";
 
 export function AlertSelector(status: String){
+    //console.log("Alert entered")
     switch (status) {
         case "Yellow":
+            //console.log("Yellow entered")
             yellowAlert();
             break;
         case "Red":
+            //console.log("Red entered")
             redAlert();
             break;
     }
 
     function yellowAlert(): JSX.Element{
+        //console.log("Yellow executing")
         return (
         <Alert variant="danger" dismissible>
             <Alert.Heading>Warning: Yellow Mark Detected</Alert.Heading>
