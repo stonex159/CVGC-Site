@@ -16,7 +16,7 @@ export function AlertSelector({status}: {status: String}){
     function yellowAlert(): JSX.Element{
         //console.log("Yellow executing")
         return (
-        <Alert variant="danger" dismissible>
+        <Alert variant="danger">
             <Alert.Heading>Warning: Yellow Mark Detected</Alert.Heading>
             <p>
             To change a yellow mark to a green mark you must have undergone testing for covid, 
@@ -32,7 +32,7 @@ export function AlertSelector({status}: {status: String}){
     }
     function redAlert(): JSX.Element{
         return (
-        <Alert variant="danger" dismissible>
+        <Alert variant="danger">
             <Alert.Heading>Warning: Red Mark Detected</Alert.Heading>
             <p>
                 You are currently out of compliance with testing or have Covid. 
