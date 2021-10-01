@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import MEMBERS from './assets/members.json'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MemberList } from './components/MemberList';
@@ -9,8 +8,6 @@ import { Person } from './interfaces/member'
 import { EditModal } from './components/EditModal';
 //import CVGC_Banner from '../src/assets/CVGC_Wallpaper.png'
 import CVGC_Logo from '../src/assets/CVGC_Logo.png'
-//import { ReactComponent as ClubBanner } from './assets/banner.svg';
-//import { ReactComponent as ClubLogo } from './assets/logo.svg';
 
 function App(): JSX.Element {
   const [club, setClub] = useState<Person[]>([]);

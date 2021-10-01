@@ -21,9 +21,11 @@ export function AlertSelector(status: String){
             <p>
             To change a yellow mark to a green mark you must have undergone testing for covid, 
             including the authorized covid shot(s). Please go to a UD Covid Testing facility to 
-            be allowed into club and other UD facilities.
+            be allowed into club and other UD facilities. 
 
-            Notice: after receiving the second shot, please wait 2 weeks for it to come into full affect.
+            Please look <a href="https://www.udel.edu/home/coronavirus/testing/">here</a> for more information
+
+            Notice: If you have had both shots but still have a yellow mark, please wait 2 weeks for the second shot to come into full affect.
             </p>
         </Alert>
         );
@@ -33,7 +35,8 @@ export function AlertSelector(status: String){
         <Alert variant="danger" dismissible>
             <Alert.Heading>Warning: Red Mark Detected</Alert.Heading>
             <p>
-                To be written.
+                You are currently out of compliance with testing or have Covid. 
+                Please contact Student Health Services ASAP: (302)-831-2226
             </p>
         </Alert>
     );}

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
-import * as ReactBootStrap from 'react-bootstrap';
+import { Col, Table } from 'react-bootstrap';
 import { Person } from '../interfaces/member';
 
 export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
@@ -8,19 +7,15 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
     function renderList(person: Person, index: number){ // renders all the data passsed in from club.map as a table
         return (
             <tr key={index}>
-                <td>{displayIndex(index)}</td>
+                <td>{index+1}</td>
                 <td>{person.name}</td>
                 <td>{person.email}</td>
                 <td>{person.status}</td>
             </tr>
     )}
 
-    function displayIndex(index: number){ // Keeps the # column from starting at 0
-            return index+1;
-    }
-
     return <Col> 
-    <ReactBootStrap.Table>
+    <Table>
         <thead className="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -33,7 +28,7 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
         <tbody>
             {theClub.map(renderList)}
         </tbody>
-    </ReactBootStrap.Table>
+    </Table>
     </Col>
 
 }
