@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/CVGC-Site/static/css/main.69d7961c.chunk.css",
-    "main.js": "/CVGC-Site/static/js/main.6abac2a3.chunk.js",
-    "main.js.map": "/CVGC-Site/static/js/main.6abac2a3.chunk.js.map",
+    "main.css": "/CVGC-Site/static/css/main.3cd9c1bb.chunk.css",
+    "main.js": "/CVGC-Site/static/js/main.8df5cb12.chunk.js",
+    "main.js.map": "/CVGC-Site/static/js/main.8df5cb12.chunk.js.map",
     "runtime-main.js": "/CVGC-Site/static/js/runtime-main.710beaae.js",
     "runtime-main.js.map": "/CVGC-Site/static/js/runtime-main.710beaae.js.map",
     "static/css/2.f2512455.chunk.css": "/CVGC-Site/static/css/2.f2512455.chunk.css",
@@ -12,15 +12,15 @@
     "static/js/3.d8c02402.chunk.js.map": "/CVGC-Site/static/js/3.d8c02402.chunk.js.map",
     "index.html": "/CVGC-Site/index.html",
     "static/css/2.f2512455.chunk.css.map": "/CVGC-Site/static/css/2.f2512455.chunk.css.map",
-    "static/css/main.69d7961c.chunk.css.map": "/CVGC-Site/static/css/main.69d7961c.chunk.css.map",
+    "static/css/main.3cd9c1bb.chunk.css.map": "/CVGC-Site/static/css/main.3cd9c1bb.chunk.css.map",
     "static/js/2.c6191f25.chunk.js.LICENSE.txt": "/CVGC-Site/static/js/2.c6191f25.chunk.js.LICENSE.txt",
-    "static/media/CVGC_Logo.b6831654.png": "/CVGC-Site/static/media/CVGC_Logo.b6831654.png"
+    "static/media/CVGC_Wallpaper.4382088b.png": "/CVGC-Site/static/media/CVGC_Wallpaper.4382088b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.710beaae.js",
     "static/css/2.f2512455.chunk.css",
     "static/js/2.c6191f25.chunk.js",
-    "static/css/main.69d7961c.chunk.css",
-    "static/js/main.6abac2a3.chunk.js"
+    "static/css/main.3cd9c1bb.chunk.css",
+    "static/js/main.8df5cb12.chunk.js"
   ]
 }
