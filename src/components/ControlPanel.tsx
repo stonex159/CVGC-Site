@@ -26,15 +26,18 @@ export function ControlPanel({getMember, showEditModal, addMember}:
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
 
-
       addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
-      setName(""); // clears the name const and text box
-      setEmail(""); // clears the email const and text box
-      setStatus(""); // unchecks the radio buttons
+      clearData();
     }
 
     function showModal() { // makes the modal appear
       showEditModal(true);
+    }
+
+    function clearData(){
+      setName(""); // clears the name const and text box
+      setEmail(""); // clears the email const and text box
+      setStatus(""); // unchecks the radio buttons
     }
   
     return (
