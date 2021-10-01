@@ -17,8 +17,8 @@ export function ControlPanel({getMember, showEditModal, addMember}:
     }
 
     function validateTable() { // Makes sure that there is data to edit
-      if(getMember(1))
-        return getMember(1).name !== "" && getMember(1).email !== "" && getMember(1).status !== "";
+      if(getMember(0))
+        return getMember(0).name !== "" && getMember(0).email !== "" && getMember(0).status !== "";
       else
         return false;
     }

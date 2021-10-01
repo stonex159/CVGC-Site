@@ -15,10 +15,8 @@ export function MemberList({theClub}:{theClub: (Person[])}): JSX.Element {
             </tr>
     )}
 
-    function displayIndex(index: number){ // Keeps the # column from starting at 0 and out of bounds of the data
-        if(index>0){
-            return index;
-        }
+    function displayIndex(index: number){ // Keeps the # column from starting at 0
+            return index+1;
     }
 
     return <Col> 

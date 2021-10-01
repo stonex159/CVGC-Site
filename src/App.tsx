@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MEMBERS from './assets/members.json'
+//import MEMBERS from './assets/members.json'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MemberList } from './components/MemberList';
@@ -13,7 +13,7 @@ import CVGC_Logo from '../src/assets/CVGC_Logo.png'
 //import { ReactComponent as ClubLogo } from './assets/logo.svg';
 
 function App(): JSX.Element {
-  const [club, setClub] = useState<Person[]>(MEMBERS);
+  const [club, setClub] = useState<Person[]>([]);
   const [visible, setVisible] = useState<boolean>(false);
   
   function addMember(person: Person){ // adds a person to the club array
