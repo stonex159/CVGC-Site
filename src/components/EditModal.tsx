@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Modal, ModalBody, Form, Button} from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import { Person } from '../interfaces/member';
-//import { AlertSelector } from './Alerts';
+import { AlertSelector } from './Alerts';
 
 export function EditModal({getMember, checkMember, changeMember, visible, setVisible, club}: 
     {getMember: (b: number)=>Person, 
@@ -41,7 +41,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
     function saveChanges(event: { preventDefault: () => void; }){
         event.preventDefault();
 
-        //AlertSelector(status);
+        AlertSelector(status);
         changeMember(index, name, email, status); // sends the edit data to be put into the array
         clearData();        
     }
