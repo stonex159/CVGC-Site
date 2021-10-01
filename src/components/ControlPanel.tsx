@@ -26,9 +26,7 @@ export function ControlPanel({getMember, showEditModal, addMember}:
     function handleSubmit(event: { preventDefault: () => void; }) {
       event.preventDefault();
 
-      //console.log("AlertSelector hit")
-      AlertSelector(status);
-      //console.log("AlertSelector left")
+
       addMember({name, email, status}); // creates and saves a member with the data from the control panel into the club array
       setName(""); // clears the name const and text box
       setEmail(""); // clears the email const and text box
@@ -113,6 +111,7 @@ export function ControlPanel({getMember, showEditModal, addMember}:
               Edit
             </Button>
         </Form>
+        <AlertSelector status={status}></AlertSelector>
       </Col>
     );
   }

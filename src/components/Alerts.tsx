@@ -1,16 +1,16 @@
 import { Alert } from "react-bootstrap";
 
-export function AlertSelector(status: String){
+export function AlertSelector({status}: {status: String}){
     //console.log("Alert entered")
     switch (status) {
         case "Yellow":
             //console.log("Yellow entered")
-            yellowAlert();
-            break;
+            return yellowAlert();
         case "Red":
             //console.log("Red entered")
-            redAlert();
-            break;
+            return redAlert();
+        default:
+            return greenAlert();
     }
 
     function yellowAlert(): JSX.Element{
@@ -40,4 +40,10 @@ export function AlertSelector(status: String){
             </p>
         </Alert>
     );}
+
+    function greenAlert(): JSX.Element{
+        return(
+            <span></span>
+        );
+    }
 }

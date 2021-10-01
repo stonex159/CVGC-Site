@@ -41,7 +41,6 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
     function saveChanges(event: { preventDefault: () => void; }){
         event.preventDefault();
 
-        AlertSelector(status);
         changeMember(index, name, email, status); // sends the edit data to be put into the array
         clearData();        
     }
@@ -63,6 +62,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
         <ModalHeader closeButton onClick={clearData}>
             Edit
         </ModalHeader>
+        <AlertSelector status={status}></AlertSelector>
         <ModalBody>
             <Form 
             onSubmit={handleSearch}>
