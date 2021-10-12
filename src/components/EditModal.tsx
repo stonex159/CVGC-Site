@@ -20,7 +20,7 @@ export function EditModal({getMember, checkMember, changeMember, visible, setVis
     const hide = ()=>setVisible(false);
 
     function handleIndexSearch(num: number){ 
-        if(checkMember(num-1)) // makes sure the index is not out-of-bounds of the array
+        if(checkMember(num-1)) // makes sure the index search is not out-of-bounds of the array
             setIndex(num-1);
     }
 
